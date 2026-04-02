@@ -1,0 +1,6928 @@
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #1 | Time: 22:09:11
+
+CURRENT STATE ANALYSIS:
+  Active Phase: NS
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 0.5s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 0.4s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 3 vehicles, 0.5s avg wait
+
+
+PRIORITY 4 ACTIVATED: NORMAL PHASE ROTATION
+  Rule: Regular alternation when no special conditions exist
+  Analysis: Traffic is balanced, no emergencies or starvation
+  Current Load: NS=0, EW=3 (balanced)
+  Action: Switch from NS to EW
+  Duration: 30.0s (standard cycle time)
+  Reasoning: Normal operation maintains predictable flow
+            and ensures both directions get fair service.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #2 | Time: 22:09:14
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 1.5s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 1.3s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 0.6s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 0.8s avg wait
+  EW Direction: 2 vehicles, 0.9s avg wait
+  Load Ratio (NS/EW): 0.50x
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 2 vehicles vs NS's 1
+  Pressure Ratio: 2.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #3 | Time: 22:09:18
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 2.2s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 1.7s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 3 vehicles, 2.0s avg wait
+
+🚨 EMERGENCY ALERT:
+  Emergency vehicle detected in Lane E
+  Distance to junction: ~168 pixels
+  Priority: CRITICAL - Immediate action required
+
+
+PRIORITY 1 ACTIVATED: EMERGENCY VEHICLE PREEMPTION
+  Rule: Emergency vehicles have absolute priority
+  Analysis: Ambulance detected in lane E
+  Action: Immediate switch to EW phase
+  Duration: 15.0s (optimized for emergency clearance)
+  Reasoning: Public safety requires immediate path clearing.
+            All other traffic must yield.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=15.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #4 | Time: 22:09:21
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 3.0s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 2.5s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 3 vehicles, 2.7s avg wait
+
+🚨 EMERGENCY ALERT:
+  Emergency vehicle detected in Lane W
+  Distance to junction: ~558 pixels
+  Priority: CRITICAL - Immediate action required
+
+
+PRIORITY 1 ACTIVATED: EMERGENCY VEHICLE PREEMPTION
+  Rule: Emergency vehicles have absolute priority
+  Analysis: Ambulance detected in lane W
+  Action: Immediate switch to EW phase
+  Duration: 10.0s (optimized for emergency clearance)
+  Reasoning: Public safety requires immediate path clearing.
+            All other traffic must yield.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=10.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #5 | Time: 22:09:24
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 4
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 3.5s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 2.1s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 4 vehicles, 2.8s avg wait
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 4 vehicles vs NS's 0
+  Pressure Ratio: 4.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #6 | Time: 22:09:28
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 5
+    • Avg Wait Time: 1.9s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 5 vehicles, 1.0s avg wait
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 5 vehicles vs NS's 0
+  Pressure Ratio: 5.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #7 | Time: 22:09:31
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 9
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 3.3s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 5.3s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 7
+    • Avg Wait Time: 2.6s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 1.7s avg wait
+  EW Direction: 8 vehicles, 3.9s avg wait
+  Load Ratio (NS/EW): 0.12x
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 8 vehicles vs NS's 1
+  Pressure Ratio: 8.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #8 | Time: 22:09:34
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 6.1s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 5.4s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 3 vehicles, 5.7s avg wait
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 3 vehicles vs NS's 0
+  Pressure Ratio: 3.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #9 | Time: 22:09:37
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 4
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 4.3s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 4.4s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 4 vehicles, 4.3s avg wait
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 4 vehicles vs NS's 0
+  Pressure Ratio: 4.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #10 | Time: 22:09:41
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 7
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 4.4s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 7.6s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 5
+    • Avg Wait Time: 4.8s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 2.2s avg wait
+  EW Direction: 6 vehicles, 6.2s avg wait
+  Load Ratio (NS/EW): 0.17x
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 6 vehicles vs NS's 1
+  Pressure Ratio: 6.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #11 | Time: 22:09:44
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 9
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 8.4s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane W:
+    • Vehicles: 8
+    • Avg Wait Time: 4.5s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 9 vehicles, 6.5s avg wait
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 9 vehicles vs NS's 0
+  Pressure Ratio: 9.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #12 | Time: 22:09:47
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 5.2s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 3 vehicles, 2.6s avg wait
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 3 vehicles vs NS's 0
+  Pressure Ratio: 3.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #13 | Time: 22:09:51
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 8.6s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 9.3s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 6.8s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 4.3s avg wait
+  EW Direction: 4 vehicles, 8.1s avg wait
+  Load Ratio (NS/EW): 0.25x
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 4 vehicles vs NS's 1
+  Pressure Ratio: 4.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #14 | Time: 22:09:54
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 5.8s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 2.3s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 7.5s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 2.9s avg wait
+  EW Direction: 4 vehicles, 4.9s avg wait
+  Load Ratio (NS/EW): 0.25x
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 4 vehicles vs NS's 1
+  Pressure Ratio: 4.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #15 | Time: 22:09:57
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 2
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 9.7s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 6.4s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 2 vehicles, 8.0s avg wait
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 2 vehicles vs NS's 0
+  Pressure Ratio: 2.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #16 | Time: 22:10:00
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 6.3s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 5
+    • Avg Wait Time: 8.8s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 3.1s avg wait
+  EW Direction: 5 vehicles, 4.4s avg wait
+  Load Ratio (NS/EW): 0.20x
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 5 vehicles vs NS's 1
+  Pressure Ratio: 5.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #17 | Time: 22:10:03
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 2
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 7.4s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 7.8s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 3.7s avg wait
+  EW Direction: 1 vehicles, 3.9s avg wait
+  Load Ratio (NS/EW): 1.00x
+
+
+PRIORITY 4 ACTIVATED: NORMAL PHASE ROTATION
+  Rule: Regular alternation when no special conditions exist
+  Analysis: Traffic is balanced, no emergencies or starvation
+  Current Load: NS=1, EW=1 (balanced)
+  Action: Switch from EW to NS
+  Duration: 30.0s (standard cycle time)
+  Reasoning: Normal operation maintains predictable flow
+            and ensures both directions get fair service.
+
+
+============================================================
+FINAL DECISION: Phase=NS, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #18 | Time: 22:10:07
+
+CURRENT STATE ANALYSIS:
+  Active Phase: NS
+  Total Vehicles: 2
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 2.4s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 8.5s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 2 vehicles, 5.4s avg wait
+
+
+PRIORITY 4 ACTIVATED: NORMAL PHASE ROTATION
+  Rule: Regular alternation when no special conditions exist
+  Analysis: Traffic is balanced, no emergencies or starvation
+  Current Load: NS=0, EW=2 (balanced)
+  Action: Switch from NS to EW
+  Duration: 30.0s (standard cycle time)
+  Reasoning: Normal operation maintains predictable flow
+            and ensures both directions get fair service.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #19 | Time: 22:10:10
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 2
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 10.3s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 9.0s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 2 vehicles, 9.6s avg wait
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 2 vehicles vs NS's 0
+  Pressure Ratio: 2.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #20 | Time: 22:10:13
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 1
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 2.0s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 1 vehicles, 1.0s avg wait
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 1 vehicles vs NS's 0
+  Pressure Ratio: 1.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #21 | Time: 22:10:16
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 8.3s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 3 vehicles, 4.2s avg wait
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 3 vehicles vs NS's 0
+  Pressure Ratio: 3.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #22 | Time: 22:10:20
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 3.5s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 5
+    • Avg Wait Time: 9.9s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 6 vehicles, 6.7s avg wait
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 6 vehicles vs NS's 0
+  Pressure Ratio: 6.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #23 | Time: 22:10:23
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 4.2s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 11.2s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 5 vehicles, 7.7s avg wait
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 5 vehicles vs NS's 0
+  Pressure Ratio: 5.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #24 | Time: 22:10:26
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 5
+    • Avg Wait Time: 10.6s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 5 vehicles, 5.3s avg wait
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 5 vehicles vs NS's 0
+  Pressure Ratio: 5.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #25 | Time: 22:10:29
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 7
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 6.2s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 6
+    • Avg Wait Time: 12.1s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 7 vehicles, 9.1s avg wait
+
+🚨 EMERGENCY ALERT:
+  Emergency vehicle detected in Lane W
+  Distance to junction: ~349 pixels
+  Priority: CRITICAL - Immediate action required
+
+
+PRIORITY 1 ACTIVATED: EMERGENCY VEHICLE PREEMPTION
+  Rule: Emergency vehicles have absolute priority
+  Analysis: Ambulance detected in lane W
+  Action: Immediate switch to EW phase
+  Duration: 10.0s (optimized for emergency clearance)
+  Reasoning: Public safety requires immediate path clearing.
+            All other traffic must yield.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=10.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #26 | Time: 22:10:32
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 2
+    • Avg Wait Time: 12.6s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane E:
+    • Vehicles: 3
+    • Avg Wait Time: 2.6s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 15.9s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 2 vehicles, 6.3s avg wait
+  EW Direction: 4 vehicles, 9.3s avg wait
+  Load Ratio (NS/EW): 0.50x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 15.9s
+  Threshold Exceeded: 0.9s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #27 | Time: 22:10:35
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 2
+    • Avg Wait Time: 10.7s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 7.2s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 17.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 2 vehicles, 5.4s avg wait
+  EW Direction: 4 vehicles, 12.1s avg wait
+  Load Ratio (NS/EW): 0.50x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 17.0s
+  Threshold Exceeded: 2.0s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #28 | Time: 22:10:39
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 17.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 8.0s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 15.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 8.6s avg wait
+  EW Direction: 4 vehicles, 11.7s avg wait
+  Load Ratio (NS/EW): 0.25x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane S has waited 17.2s
+  Threshold Exceeded: 2.2s over limit
+  Action: Switch to NS phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=NS, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #29 | Time: 22:10:42
+
+CURRENT STATE ANALYSIS:
+  Active Phase: NS
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 5.7s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 14.1s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 6 vehicles, 9.9s avg wait
+
+
+PRIORITY 4 ACTIVATED: NORMAL PHASE ROTATION
+  Rule: Regular alternation when no special conditions exist
+  Analysis: Traffic is balanced, no emergencies or starvation
+  Current Load: NS=0, EW=6 (balanced)
+  Action: Switch from NS to EW
+  Duration: 30.0s (standard cycle time)
+  Reasoning: Normal operation maintains predictable flow
+            and ensures both directions get fair service.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #30 | Time: 22:10:45
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 8
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 2
+    • Avg Wait Time: 18.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 3
+    • Avg Wait Time: 4.3s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 13.6s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 2 vehicles, 9.4s avg wait
+  EW Direction: 6 vehicles, 8.9s avg wait
+  Load Ratio (NS/EW): 0.33x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane S has waited 18.8s
+  Threshold Exceeded: 3.8s over limit
+  Action: Switch to NS phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=NS, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #31 | Time: 22:10:48
+
+CURRENT STATE ANALYSIS:
+  Active Phase: NS
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 9.7s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 13.0s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 5 vehicles, 11.4s avg wait
+
+
+PRIORITY 4 ACTIVATED: NORMAL PHASE ROTATION
+  Rule: Regular alternation when no special conditions exist
+  Analysis: Traffic is balanced, no emergencies or starvation
+  Current Load: NS=0, EW=5 (balanced)
+  Action: Switch from NS to EW
+  Duration: 30.0s (standard cycle time)
+  Reasoning: Normal operation maintains predictable flow
+            and ensures both directions get fair service.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #32 | Time: 22:10:51
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 7
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 2
+    • Avg Wait Time: 19.9s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 10.4s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 14.4s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 2 vehicles, 10.0s avg wait
+  EW Direction: 5 vehicles, 12.4s avg wait
+  Load Ratio (NS/EW): 0.40x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane S has waited 19.9s
+  Threshold Exceeded: 4.9s over limit
+  Action: Switch to NS phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=NS, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #33 | Time: 22:10:54
+
+CURRENT STATE ANALYSIS:
+  Active Phase: NS
+  Total Vehicles: 4
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 11.3s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 16.7s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 4 vehicles, 14.0s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 16.7s
+  Threshold Exceeded: 1.7s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #34 | Time: 22:10:58
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 6.6s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 12.5s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 3 vehicles, 9.6s avg wait
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 3 vehicles vs NS's 0
+  Pressure Ratio: 3.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #35 | Time: 22:11:01
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 2
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 6.8s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 2 vehicles, 3.4s avg wait
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 2 vehicles vs NS's 0
+  Pressure Ratio: 2.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #36 | Time: 22:11:04
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 4
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 22.5s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 16.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 4 vehicles, 19.5s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 22.5s
+  Threshold Exceeded: 7.5s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #37 | Time: 22:11:08
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 20.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 18.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 20.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 10.0s avg wait
+  EW Direction: 4 vehicles, 19.1s avg wait
+  Load Ratio (NS/EW): 0.25x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 20.2s
+  Threshold Exceeded: 5.2s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #38 | Time: 22:11:11
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 7
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 18.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 5
+    • Avg Wait Time: 14.6s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 7 vehicles, 16.6s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 18.6s
+  Threshold Exceeded: 3.6s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #39 | Time: 22:11:14
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 7
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 19.3s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 5
+    • Avg Wait Time: 17.7s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 7 vehicles, 18.5s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 19.3s
+  Threshold Exceeded: 4.3s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #40 | Time: 22:11:17
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 4
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 25.3s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 13.1s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 4 vehicles, 19.2s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 25.3s
+  Threshold Exceeded: 10.3s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #41 | Time: 22:11:20
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 20.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 11.4s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 6 vehicles, 15.8s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 20.2s
+  Threshold Exceeded: 5.2s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #42 | Time: 22:11:24
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 26.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 16.3s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 3 vehicles, 21.2s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 26.2s
+  Threshold Exceeded: 11.2s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #43 | Time: 22:11:27
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 3
+    • Avg Wait Time: 21.5s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 26.7s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 21.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 3 vehicles, 10.7s avg wait
+  EW Direction: 2 vehicles, 24.3s avg wait
+  Load Ratio (NS/EW): 1.50x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 26.7s
+  Threshold Exceeded: 11.7s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #44 | Time: 22:11:30
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 22.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 27.3s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 16.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 11.3s avg wait
+  EW Direction: 5 vehicles, 22.1s avg wait
+  Load Ratio (NS/EW): 0.20x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 27.3s
+  Threshold Exceeded: 12.3s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #45 | Time: 22:11:33
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 23.3s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 28.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 17.9s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 11.7s avg wait
+  EW Direction: 5 vehicles, 23.0s avg wait
+  Load Ratio (NS/EW): 0.20x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 28.0s
+  Threshold Exceeded: 13.0s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #46 | Time: 22:11:36
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 28.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 5
+    • Avg Wait Time: 15.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 6 vehicles, 21.7s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 28.4s
+  Threshold Exceeded: 13.4s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #47 | Time: 22:11:40
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 28.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 5
+    • Avg Wait Time: 19.3s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 6 vehicles, 24.1s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 28.8s
+  Threshold Exceeded: 13.8s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #48 | Time: 22:11:43
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 9
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 3
+    • Avg Wait Time: 6.7s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 29.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 5
+    • Avg Wait Time: 18.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 3 vehicles, 3.3s avg wait
+  EW Direction: 6 vehicles, 24.0s avg wait
+  Load Ratio (NS/EW): 0.50x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 29.2s
+  Threshold Exceeded: 14.2s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #49 | Time: 22:11:46
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 16.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 24.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 6 vehicles, 20.6s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 24.8s
+  Threshold Exceeded: 9.8s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #50 | Time: 22:11:49
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 17.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 18.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 3 vehicles, 17.8s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 18.4s
+  Threshold Exceeded: 3.4s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #51 | Time: 22:11:52
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 1
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 18.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 1 vehicles, 9.4s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 18.8s
+  Threshold Exceeded: 3.8s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #52 | Time: 22:11:55
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 2
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 26.7s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 2 vehicles, 13.3s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 26.7s
+  Threshold Exceeded: 11.7s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #53 | Time: 22:11:58
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 4
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 16.3s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 26.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 4 vehicles, 21.5s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 26.6s
+  Threshold Exceeded: 11.6s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #54 | Time: 22:12:02
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 32.7s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 12.1s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 24.5s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 16.4s avg wait
+  EW Direction: 4 vehicles, 18.3s avg wait
+  Load Ratio (NS/EW): 0.25x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane S has waited 32.7s
+  Threshold Exceeded: 17.7s over limit
+  Action: Switch to NS phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=NS, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #55 | Time: 22:12:05
+
+CURRENT STATE ANALYSIS:
+  Active Phase: NS
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 2
+    • Avg Wait Time: 20.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 28.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 2 vehicles, 10.3s avg wait
+  EW Direction: 3 vehicles, 14.0s avg wait
+  Load Ratio (NS/EW): 0.67x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 28.1s
+  Threshold Exceeded: 13.1s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #56 | Time: 22:12:08
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 1
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 35.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 1 vehicles, 17.9s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 35.8s
+  Threshold Exceeded: 20.8s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #57 | Time: 22:12:11
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 2
+    • Avg Wait Time: 25.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 23.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 2 vehicles, 12.7s avg wait
+  EW Direction: 4 vehicles, 11.7s avg wait
+  Load Ratio (NS/EW): 0.50x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane S has waited 25.4s
+  Threshold Exceeded: 10.4s over limit
+  Action: Switch to NS phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=NS, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #58 | Time: 22:12:14
+
+CURRENT STATE ANALYSIS:
+  Active Phase: NS
+  Total Vehicles: 4
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 25.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 4 vehicles, 12.9s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 25.8s
+  Threshold Exceeded: 10.8s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #59 | Time: 22:12:18
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 8
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 36.5s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 9.8s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane W:
+    • Vehicles: 5
+    • Avg Wait Time: 16.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 18.3s avg wait
+  EW Direction: 7 vehicles, 12.9s avg wait
+  Load Ratio (NS/EW): 0.14x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane S has waited 36.5s
+  Threshold Exceeded: 21.5s over limit
+  Action: Switch to NS phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=NS, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #60 | Time: 22:12:21
+
+CURRENT STATE ANALYSIS:
+  Active Phase: NS
+  Total Vehicles: 4
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 19.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 36.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 4 vehicles, 27.9s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 36.0s
+  Threshold Exceeded: 21.0s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #61 | Time: 22:12:24
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 9
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 31.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 13.2s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane W:
+    • Vehicles: 6
+    • Avg Wait Time: 25.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 15.6s avg wait
+  EW Direction: 8 vehicles, 19.5s avg wait
+  Load Ratio (NS/EW): 0.12x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane S has waited 31.2s
+  Threshold Exceeded: 16.2s over limit
+  Action: Switch to NS phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=NS, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #62 | Time: 22:12:27
+
+CURRENT STATE ANALYSIS:
+  Active Phase: NS
+  Total Vehicles: 8
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 38.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 18.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 5
+    • Avg Wait Time: 25.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 19.4s avg wait
+  EW Direction: 7 vehicles, 22.2s avg wait
+  Load Ratio (NS/EW): 0.14x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane S has waited 38.8s
+  Threshold Exceeded: 23.8s over limit
+  Action: Switch to NS phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=NS, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #63 | Time: 22:12:31
+
+CURRENT STATE ANALYSIS:
+  Active Phase: NS
+  Total Vehicles: 7
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 14.4s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane W:
+    • Vehicles: 5
+    • Avg Wait Time: 29.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 7 vehicles, 21.8s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 29.2s
+  Threshold Exceeded: 14.2s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #64 | Time: 22:12:34
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 40.3s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 3
+    • Avg Wait Time: 11.7s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 34.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 20.2s avg wait
+  EW Direction: 5 vehicles, 22.9s avg wait
+  Load Ratio (NS/EW): 0.20x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane S has waited 40.3s
+  Threshold Exceeded: 25.3s over limit
+  Action: Switch to NS phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=NS, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #65 | Time: 22:12:37
+
+CURRENT STATE ANALYSIS:
+  Active Phase: NS
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 16.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 41.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 3 vehicles, 28.6s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 41.0s
+  Threshold Exceeded: 26.0s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #66 | Time: 22:12:40
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 1
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 5.3s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 1 vehicles, 2.6s avg wait
+
+
+PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)
+  Rule: Extend green when direction has 1.5x+ more vehicles
+  Analysis: EW has 1 vehicles vs NS's 0
+  Pressure Ratio: 1.00x (threshold: 1.5x)
+  Action: EXTEND current EW phase
+  Duration: 40.0s (extended to clear backlog)
+  Reasoning: High congestion in active direction justifies
+            extension to prevent massive queue buildup.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=40.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #67 | Time: 22:12:43
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 23.3s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 24.7s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 40.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 11.7s avg wait
+  EW Direction: 4 vehicles, 32.4s avg wait
+  Load Ratio (NS/EW): 0.25x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 40.1s
+  Threshold Exceeded: 25.1s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #68 | Time: 22:12:46
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 2
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 25.9s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 45.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 2 vehicles, 35.7s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 45.4s
+  Threshold Exceeded: 30.4s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #69 | Time: 22:12:49
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 4
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 18.9s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 45.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 4 vehicles, 32.0s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 45.2s
+  Threshold Exceeded: 30.2s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #70 | Time: 22:12:52
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 2
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 15.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 2 vehicles, 7.6s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 15.1s
+  Threshold Exceeded: 0.1s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #71 | Time: 22:12:56
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 28.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 40.7s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 3 vehicles, 34.7s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 40.7s
+  Threshold Exceeded: 25.7s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #72 | Time: 22:12:59
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 4
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 2
+    • Avg Wait Time: 40.5s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 29.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 49.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 2 vehicles, 20.3s avg wait
+  EW Direction: 2 vehicles, 39.1s avg wait
+  Load Ratio (NS/EW): 1.00x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 49.1s
+  Threshold Exceeded: 34.1s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #73 | Time: 22:13:02
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 46.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 29.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 34.9s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 23.1s avg wait
+  EW Direction: 5 vehicles, 32.4s avg wait
+  Load Ratio (NS/EW): 0.20x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane S has waited 46.2s
+  Threshold Exceeded: 31.2s over limit
+  Action: Switch to NS phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=NS, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #74 | Time: 22:13:05
+
+CURRENT STATE ANALYSIS:
+  Active Phase: NS
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 3
+    • Avg Wait Time: 23.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 42.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 5 vehicles, 32.8s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 42.6s
+  Threshold Exceeded: 27.6s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #75 | Time: 22:13:09
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 1
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 25.5s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 1 vehicles, 12.8s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 25.5s
+  Threshold Exceeded: 10.5s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #76 | Time: 22:13:12
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 3
+    • Avg Wait Time: 7.8s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 28.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 5 vehicles, 18.0s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 28.2s
+  Threshold Exceeded: 13.2s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #77 | Time: 22:13:15
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 26.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 34.5s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 13.1s avg wait
+  EW Direction: 4 vehicles, 17.3s avg wait
+  Load Ratio (NS/EW): 0.25x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 34.5s
+  Threshold Exceeded: 19.5s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #78 | Time: 22:13:18
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 24.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 37.5s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 6 vehicles, 30.7s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 37.5s
+  Threshold Exceeded: 22.5s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #79 | Time: 22:13:21
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 44.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 27.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 6 vehicles, 35.9s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 44.2s
+  Threshold Exceeded: 29.2s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #80 | Time: 22:13:25
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 40.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 42.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 3 vehicles, 41.3s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 42.1s
+  Threshold Exceeded: 27.1s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #81 | Time: 22:13:28
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 1
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 41.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 1 vehicles, 20.5s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 41.0s
+  Threshold Exceeded: 26.0s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #82 | Time: 22:13:31
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 7
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 49.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 4
+    • Avg Wait Time: 23.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 43.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 24.8s avg wait
+  EW Direction: 6 vehicles, 33.2s avg wait
+  Load Ratio (NS/EW): 0.17x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane S has waited 49.6s
+  Threshold Exceeded: 34.6s over limit
+  Action: Switch to NS phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=NS, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #83 | Time: 22:13:34
+
+CURRENT STATE ANALYSIS:
+  Active Phase: NS
+  Total Vehicles: 4
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 42.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 50.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 43.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 21.1s avg wait
+  EW Direction: 3 vehicles, 47.2s avg wait
+  Load Ratio (NS/EW): 0.33x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 50.6s
+  Threshold Exceeded: 35.6s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #84 | Time: 22:13:38
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 2
+    • Avg Wait Time: 14.6s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 44.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 2 vehicles, 7.3s avg wait
+  EW Direction: 3 vehicles, 22.0s avg wait
+  Load Ratio (NS/EW): 0.67x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 44.0s
+  Threshold Exceeded: 29.0s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #85 | Time: 22:13:41
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 1.7s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 5
+    • Avg Wait Time: 35.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 6 vehicles, 18.7s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 35.6s
+  Threshold Exceeded: 20.6s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #86 | Time: 22:13:44
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 1
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 32.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 1 vehicles, 16.3s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 32.6s
+  Threshold Exceeded: 17.6s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #87 | Time: 22:13:47
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 2
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 44.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 30.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 22.2s avg wait
+  EW Direction: 1 vehicles, 15.2s avg wait
+  Load Ratio (NS/EW): 1.00x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane S has waited 44.4s
+  Threshold Exceeded: 29.4s over limit
+  Action: Switch to NS phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=NS, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #88 | Time: 22:13:51
+
+CURRENT STATE ANALYSIS:
+  Active Phase: NS
+  Total Vehicles: 2
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 47.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 2 vehicles, 23.5s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 47.1s
+  Threshold Exceeded: 32.1s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #89 | Time: 22:13:54
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 3
+    • Avg Wait Time: 18.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 41.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 5 vehicles, 29.9s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 41.8s
+  Threshold Exceeded: 26.8s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #90 | Time: 22:13:57
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 2
+    • Avg Wait Time: 28.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 34.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 30.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 2 vehicles, 14.1s avg wait
+  EW Direction: 3 vehicles, 32.0s avg wait
+  Load Ratio (NS/EW): 0.67x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 34.1s
+  Threshold Exceeded: 19.1s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #91 | Time: 22:14:01
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 49.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 3 vehicles, 24.6s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 49.1s
+  Threshold Exceeded: 34.1s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #92 | Time: 22:14:04
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 51.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 3 vehicles, 25.9s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 51.8s
+  Threshold Exceeded: 36.8s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #93 | Time: 22:14:07
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 1
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 63.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 1 vehicles, 31.5s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 63.0s
+  Threshold Exceeded: 48.0s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #94 | Time: 22:14:10
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 46.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 3
+    • Avg Wait Time: 15.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 63.7s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 23.4s avg wait
+  EW Direction: 4 vehicles, 39.4s avg wait
+  Load Ratio (NS/EW): 0.25x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 63.7s
+  Threshold Exceeded: 48.7s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #95 | Time: 22:14:13
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 47.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 24.5s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 59.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 23.6s avg wait
+  EW Direction: 4 vehicles, 42.1s avg wait
+  Load Ratio (NS/EW): 0.25x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 59.8s
+  Threshold Exceeded: 44.8s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #96 | Time: 22:14:17
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 47.7s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 36.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 46.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 23.9s avg wait
+  EW Direction: 4 vehicles, 41.2s avg wait
+  Load Ratio (NS/EW): 0.25x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane S has waited 47.7s
+  Threshold Exceeded: 32.7s over limit
+  Action: Switch to NS phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=NS, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #97 | Time: 22:14:20
+
+CURRENT STATE ANALYSIS:
+  Active Phase: NS
+  Total Vehicles: 8
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 7.4s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 37.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 6
+    • Avg Wait Time: 46.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 3.7s avg wait
+  EW Direction: 7 vehicles, 42.0s avg wait
+  Load Ratio (NS/EW): 0.14x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 46.8s
+  Threshold Exceeded: 31.8s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #98 | Time: 22:14:23
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 9
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 11.8s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 37.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 7
+    • Avg Wait Time: 41.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 5.9s avg wait
+  EW Direction: 8 vehicles, 39.6s avg wait
+  Load Ratio (NS/EW): 0.12x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 41.4s
+  Threshold Exceeded: 26.4s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #99 | Time: 22:14:27
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 1
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 38.5s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 1 vehicles, 19.3s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 38.5s
+  Threshold Exceeded: 23.5s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #100 | Time: 22:14:30
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 1
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 58.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 1 vehicles, 29.3s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 58.6s
+  Threshold Exceeded: 43.6s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #101 | Time: 22:14:34
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 19.3s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 40.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 6 vehicles, 29.9s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 40.6s
+  Threshold Exceeded: 25.6s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #102 | Time: 22:14:37
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 2
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 41.3s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 60.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 20.7s avg wait
+  EW Direction: 1 vehicles, 30.0s avg wait
+  Load Ratio (NS/EW): 1.00x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 60.0s
+  Threshold Exceeded: 45.0s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #103 | Time: 22:14:40
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 8
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 12.7s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 14.7s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane W:
+    • Vehicles: 6
+    • Avg Wait Time: 40.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 6.3s avg wait
+  EW Direction: 7 vehicles, 27.3s avg wait
+  Load Ratio (NS/EW): 0.14x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 40.0s
+  Threshold Exceeded: 25.0s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #104 | Time: 22:14:43
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 2
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 60.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 2 vehicles, 30.2s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 60.4s
+  Threshold Exceeded: 45.4s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #105 | Time: 22:14:46
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 2
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 61.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 2 vehicles, 30.6s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 61.1s
+  Threshold Exceeded: 46.1s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #106 | Time: 22:14:50
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 55.9s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 3 vehicles, 27.9s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 55.9s
+  Threshold Exceeded: 40.9s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #107 | Time: 22:14:53
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 37.3s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 63.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 3 vehicles, 50.2s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 63.0s
+  Threshold Exceeded: 48.0s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #108 | Time: 22:14:56
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 7
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 3
+    • Avg Wait Time: 41.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 45.9s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 7 vehicles, 43.5s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 45.9s
+  Threshold Exceeded: 30.9s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #109 | Time: 22:14:59
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 42.7s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 47.7s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 5 vehicles, 45.2s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 47.7s
+  Threshold Exceeded: 32.7s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #110 | Time: 22:15:02
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 3
+    • Avg Wait Time: 43.3s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 44.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 6 vehicles, 43.9s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 44.6s
+  Threshold Exceeded: 29.6s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #111 | Time: 22:15:05
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 2.3s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 28.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 69.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 1.2s avg wait
+  EW Direction: 4 vehicles, 49.0s avg wait
+  Load Ratio (NS/EW): 0.25x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 69.8s
+  Threshold Exceeded: 54.8s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #112 | Time: 22:15:08
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 4
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 45.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 70.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 4 vehicles, 58.3s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 70.8s
+  Threshold Exceeded: 55.8s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #113 | Time: 22:15:11
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 45.7s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 66.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 3 vehicles, 56.0s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 66.2s
+  Threshold Exceeded: 51.2s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #114 | Time: 22:15:15
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 4
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 51.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 55.9s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 4 vehicles, 53.5s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 55.9s
+  Threshold Exceeded: 40.9s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #115 | Time: 22:15:18
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 4
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 52.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 43.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 4 vehicles, 47.5s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 52.0s
+  Threshold Exceeded: 37.0s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #116 | Time: 22:15:21
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 9
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 2
+    • Avg Wait Time: 9.2s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane E:
+    • Vehicles: 3
+    • Avg Wait Time: 45.7s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 35.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 2 vehicles, 4.6s avg wait
+  EW Direction: 7 vehicles, 40.3s avg wait
+  Load Ratio (NS/EW): 0.29x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 45.7s
+  Threshold Exceeded: 30.7s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #117 | Time: 22:15:25
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 44.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 3 vehicles, 22.1s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 44.1s
+  Threshold Exceeded: 29.1s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #118 | Time: 22:15:28
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 7
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 2
+    • Avg Wait Time: 17.9s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 2
+    • Avg Wait Time: 47.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 3
+    • Avg Wait Time: 42.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 2 vehicles, 8.9s avg wait
+  EW Direction: 5 vehicles, 44.8s avg wait
+  Load Ratio (NS/EW): 0.40x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 47.6s
+  Threshold Exceeded: 32.6s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #119 | Time: 22:15:31
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 7
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 2
+    • Avg Wait Time: 14.9s
+    • Avg Speed: 0.0 px/s
+    • Status: CONGESTED 🔶
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 54.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 55.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 2 vehicles, 7.4s avg wait
+  EW Direction: 5 vehicles, 54.8s avg wait
+  Load Ratio (NS/EW): 0.40x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 55.4s
+  Threshold Exceeded: 40.4s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #120 | Time: 22:15:34
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 2
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 46.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 79.2s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 23.4s avg wait
+  EW Direction: 1 vehicles, 39.6s avg wait
+  Load Ratio (NS/EW): 1.00x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 79.2s
+  Threshold Exceeded: 64.2s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #121 | Time: 22:15:38
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 1
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 72.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 1 vehicles, 36.1s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 72.1s
+  Threshold Exceeded: 57.1s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #122 | Time: 22:15:41
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 4
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 3
+    • Avg Wait Time: 29.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 80.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 4 vehicles, 55.0s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 80.4s
+  Threshold Exceeded: 65.4s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #123 | Time: 22:15:44
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 3
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 43.3s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 43.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 81.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 21.7s avg wait
+  EW Direction: 2 vehicles, 62.3s avg wait
+  Load Ratio (NS/EW): 0.50x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 81.1s
+  Threshold Exceeded: 66.1s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #124 | Time: 22:15:47
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 5
+    • Avg Wait Time: 50.7s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 5 vehicles, 25.3s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 50.7s
+  Threshold Exceeded: 35.7s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #125 | Time: 22:15:50
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 44.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 44.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 4
+    • Avg Wait Time: 61.0s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 22.4s avg wait
+  EW Direction: 5 vehicles, 52.8s avg wait
+  Load Ratio (NS/EW): 0.20x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 61.0s
+  Threshold Exceeded: 46.0s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #126 | Time: 22:15:53
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 4
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 1
+    • Avg Wait Time: 61.8s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 45.3s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 61.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 1 vehicles, 30.9s avg wait
+  EW Direction: 3 vehicles, 53.5s avg wait
+  Load Ratio (NS/EW): 0.33x
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane S has waited 61.8s
+  Threshold Exceeded: 46.8s over limit
+  Action: Switch to NS phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=NS, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #127 | Time: 22:15:56
+
+CURRENT STATE ANALYSIS:
+  Active Phase: NS
+  Total Vehicles: 2
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 1.4s
+    • Avg Speed: 0.0 px/s
+    • Status: FLOWING ✓
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 83.3s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 2 vehicles, 42.3s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 83.3s
+  Threshold Exceeded: 68.3s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #128 | Time: 22:15:59
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 3
+    • Avg Wait Time: 35.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 73.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 5 vehicles, 54.3s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 73.6s
+  Threshold Exceeded: 58.6s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #129 | Time: 22:16:02
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 2
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 84.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 1
+    • Avg Wait Time: 64.4s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 2 vehicles, 74.5s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane E has waited 84.6s
+  Threshold Exceeded: 69.6s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #130 | Time: 22:16:05
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 6
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 1
+    • Avg Wait Time: 47.9s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 5
+    • Avg Wait Time: 64.5s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 6 vehicles, 56.2s avg wait
+
+
+PRIORITY 2 ACTIVATED: STARVATION PREVENTION
+  Rule: No lane should wait more than 15 seconds
+  Analysis: Lane W has waited 64.5s
+  Threshold Exceeded: 49.5s over limit
+  Action: Switch to EW phase
+  Duration: 30.0s (standard fairness cycle)
+  Reasoning: Fairness requires serving long-waiting lanes.
+            Prevents indefinite delays and driver frustration.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=30.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #131 | Time: 22:16:09
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 5
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 3
+    • Avg Wait Time: 33.1s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+  Lane W:
+    • Vehicles: 2
+    • Avg Wait Time: 75.6s
+    • Avg Speed: 0.0 px/s
+    • Status: STARVING ⚠️
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 5 vehicles, 54.4s avg wait
+
+🚨 EMERGENCY ALERT:
+  Emergency vehicle detected in Lane E
+  Distance to junction: ~219 pixels
+  Priority: CRITICAL - Immediate action required
+
+
+PRIORITY 1 ACTIVATED: EMERGENCY VEHICLE PREEMPTION
+  Rule: Emergency vehicles have absolute priority
+  Analysis: Ambulance detected in lane E
+  Action: Immediate switch to EW phase
+  Duration: 10.0s (optimized for emergency clearance)
+  Reasoning: Public safety requires immediate path clearing.
+            All other traffic must yield.
+
+
+============================================================
+FINAL DECISION: Phase=EW, Duration=10.0s
+============================================================
+
+================================================================================
+
+============================================================
+TRAFFIC-R1 INTELLIGENT REASONING ENGINE
+============================================================
+Decision #132 | Time: 22:16:12
+
+CURRENT STATE ANALYSIS:
+  Active Phase: EW
+  Total Vehicles: 0
+
+LANE-BY-LANE BREAKDOWN:
+  Lane N:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane S:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane E:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+  Lane W:
+    • Vehicles: 0
+    • Avg Wait Time: 0.0s
+    • Avg Speed: 0.0 px/s
+    • Status: EMPTY ✓
+
+TRAFFIC PRESSURE ANALYSIS:
+  NS Direction: 0 vehicles, 0.0s avg wait
+  EW Direction: 0 vehicles, 0.0s avg wait
+
+
+PRIORITY 4 ACTIVATED: NORMAL PHASE ROTATION
+  Rule: Regular alternation when no special conditions exist
+  Analysis: Traffic is balanced, no emergencies or starvation
+  Current Load: NS=0, EW=0 (balanced)
+  Action: Switch from EW to NS
+  Duration: 30.0s (standard cycle time)
+  Reasoning: Normal operation maintains predictable flow
+            and ensures both directions get fair service.
+
+
+============================================================
+FINAL DECISION: Phase=NS, Duration=30.0s
+============================================================
+
+================================================================================
+

@@ -301,14 +301,14 @@ class IntelligentTrafficReasoner:
         decision_phase = 'EW' if current_phase == 'NS' else 'NS'
         duration = 30.0
 
-        reason = f"PRIORITY 4 ACTIVATED: NORMAL PHASE ROTATION\n"
-        reason += f"  Rule: Regular alternation when no special conditions exist\n"
-        reason += f"  Analysis: Traffic is balanced, no emergencies or starvation\n"
+        reason = "PRIORITY 4 ACTIVATED: NORMAL PHASE ROTATION\n"
+        reason += "  Rule: Regular alternation when no special conditions exist\n"
+        reason += "  Analysis: Traffic is balanced, no emergencies or starvation\n"
         reason += f"  Current Load: NS={ns_load}, EW={ew_load} (balanced)\n"
         reason += f"  Action: Switch from {current_phase} to {decision_phase}\n"
         reason += f"  Duration: {duration}s (standard cycle time)\n"
-        reason += f"  Reasoning: Normal operation maintains predictable flow\n"
-        reason += f"            and ensures both directions get fair service.\n"
+        reason += "  Reasoning: Normal operation maintains predictable flow\n"
+        reason += "            and ensures both directions get fair service.\n"
 
         return decision_phase, duration, reason
 
@@ -555,34 +555,22 @@ class TrafficJunctionSystem:
         overlay = vis.copy()
         height, width = vis.shape[:2]
 
-        # Draw directional indicators
-        center_x, center_y = width // 2, height // 2
+        # Define colors dictionary
+        colors = {
+            'N': (0, 0, 255),   # Red for North
+            'S': (255, 0, 255), # Magenta for South
+            'E': (0, 255, 0),   # Green for East
+            'W': (255, 255, 0)  # Cyan for West
+        }
 
-        # North Arrow and Label
-        cv2.arrowedLine(vis, (center_x, center_y), (center_x, 20), (0, 0, 255), 2)
-        cv2.putText(vis, "N", (center_x - 10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
-
-        # South Arrow and Label
-        cv2.arrowedLine(vis, (center_x, center_y), (center_x, height - 20), (255, 0, 255), 2)
-        cv2.putText(vis, "S", (center_x - 10, height - 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 0, 255), 2)
-
-        # East Arrow and Label
-        cv2.arrowedLine(vis, (center_x, center_y), (width - 20, center_y), (0, 255, 0), 2)
-        cv2.putText(vis, "E", (width - 30, center_y + 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
-
-        # West Arrow and Label
-        cv2.arrowedLine(vis, (center_x, center_y), (20, center_y), (255, 255, 0), 2)
-        cv2.putText(vis, "W", (30, center_y + 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 0), 2)
+        # Draw direction labels
+        cv2.putText(vis, "N", (width // 2 - 10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, colors['N'], 2)
+        cv2.putText(vis, "S", (width // 2 - 10, height - 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, colors['S'], 2)
+        cv2.putText(vis, "E", (width - 30, height // 2 + 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, colors['E'], 2)
+        cv2.putText(vis, "W", (30, height // 2 + 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, colors['W'], 2)
 
         for vehicle in vehicles.values():
             x1, y1, x2, y2 = vehicle.bbox
-
-            colors = {
-                'N': (0, 0, 255),   # Red for North
-                'S': (255, 0, 255), # Magenta for South
-                'E': (0, 255, 0),   # Green for East
-                'W': (255, 255, 0)  # Cyan for West
-            }
             color = colors.get(vehicle.lane, (255, 255, 255))
 
             if vehicle.is_emergency:
@@ -636,10 +624,9 @@ class TrafficJunctionSystem:
 
         for i, lane in enumerate(['N', 'S', 'E', 'W']):
             count = sum(1 for v in vehicles.values() if v.lane == lane)
-            color = colors[lane]
             y = y_offset + 45 + (i * 20)
             cv2.putText(vis, f"{lane}: {count:2d}", (20, y),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, colors[lane], 2)
 
         return vis
     def run(self):
@@ -701,7 +688,7 @@ def export_results(system):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
     # Save statistics
-    with open(f'results_stats_{timestamp}.csv', 'w', newline='') as f:
+    with open(f'results_stats_{timestamp}.csv', 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
         writer.writerow(['Metric', 'Value'])
         for key, value in system.stats.items():
@@ -709,8 +696,8 @@ def export_results(system):
         writer.writerow(['Total Vehicles Tracked', len(system.tracker.tracks)])
         writer.writerow(['Reasoning Calls', system.reasoner.decision_count])
 
-    # Save reasoning log
-    with open(f'reasoning_log_{timestamp}.txt', 'w') as f:
+    # Save reasoning log with UTF-8 encoding
+    with open(f'reasoning_log_{timestamp}.txt', 'w', encoding='utf-8') as f:
         for reasoning in system.reasoner.reasoning_log:
             f.write(reasoning)
             f.write("\n" + "="*80 + "\n\n")
