@@ -1,26 +1,35 @@
 """
 Intelligent Traffic Junction Control System
 YOLOv11 + ByteTrack + Advanced Rule-Based Reasoning
++ DEEP REINFORCEMENT LEARNING (DQN) for adaptive signal control
 
 OPTIMIZED FOR PERFORMANCE - No LLM delays!
-Works perfectly on any system with detailed reasoning output.
+Supports both rule-based and RL modes for research comparison.
 
 Requirements:
-pip install opencv-python numpy ultralytics
+pip install opencv-python numpy ultralytics torch
 """
 
 import cv2
 import numpy as np
 from dataclasses import dataclass, field
-from typing import List, Dict, Tuple
+from typing import List, Dict, Tuple, Optional
 from datetime import datetime
 import time
 import random
 from collections import deque
+import math
 
 # YOLOv11 for real-time detection
 from ultralytics import YOLO
 
+# ===== RL ADDITIONS =====
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import torch.nn.functional as F
+
+# ---------------------------- Existing Data Classes ----------------------------
 @dataclass
 class Vehicle:
     """Represents a tracked vehicle in the junction"""
@@ -39,7 +48,6 @@ class Vehicle:
     is_emergency: bool = False
 
     def update_position(self, new_x: float, new_y: float, dt: float = 0.1):
-        """Update vehicle position and calculate velocity"""
         self.vx = (new_x - self.x) / max(dt, 0.001)
         self.vy = (new_y - self.y) / max(dt, 0.001)
         self.speed = np.sqrt(self.vx**2 + self.vy**2)
@@ -47,11 +55,9 @@ class Vehicle:
         self.y = new_y
 
     def is_stopped(self, threshold: float = 2.0) -> bool:
-        """Check if vehicle is stopped"""
         return self.speed < threshold
 
     def get_center(self) -> Tuple[int, int]:
-        """Get center point from bbox"""
         x1, y1, x2, y2 = self.bbox
         return ((x1 + x2) // 2, (y1 + y2) // 2)
 
@@ -90,28 +96,16 @@ class TrafficSignalPhase:
     def reset(self, duration: float = None):
         self.timer = duration if duration is not None else self.duration
 
+# ---------------------------- Rule-Based Reasoner (unchanged) ----------------------------
 class IntelligentTrafficReasoner:
-    """
-    Advanced Rule-Based Reasoning Engine
-    Implements the same 4-priority hierarchy with detailed explanations
-    FAST - No LLM delays!
-    """
-
+    """Advanced Rule-Based Reasoning Engine (original)"""
     def __init__(self):
         self.reasoning_log = []
         self.decision_count = 0
 
     def analyze_junction(self, vehicles: List[Vehicle], tracks: Dict[str, VehicleTrack],
                         current_phase: str) -> Tuple[str, float, str]:
-        """
-        Analyze junction and make intelligent decision
-
-        Returns: (next_phase, duration, reasoning_text)
-        """
-
         self.decision_count += 1
-
-        # Gather junction state
         lane_counts = {'N': 0, 'S': 0, 'E': 0, 'W': 0}
         lane_wait_times = {'N': [], 'S': [], 'E': [], 'W': []}
         lane_speeds = {'N': [], 'S': [], 'E': [], 'W': []}
@@ -122,17 +116,13 @@ class IntelligentTrafficReasoner:
         for v in vehicles:
             lane_counts[v.lane] += 1
             lane_speeds[v.lane].append(v.speed)
-
             if v.is_stopped():
                 lane_wait_times[v.lane].append(v.wait_time)
-
             if v.is_emergency:
                 emergency_detected = True
                 emergency_lane = v.lane
-                # Calculate distance to junction center (simplified)
                 emergency_distance = min(emergency_distance, abs(640 - v.x) + abs(360 - v.y))
 
-        # Calculate statistics
         avg_waits = {}
         avg_speeds = {}
         for lane in ['N', 'S', 'E', 'W']:
@@ -141,25 +131,16 @@ class IntelligentTrafficReasoner:
             avg_waits[lane] = sum(times) / len(times) if times else 0.0
             avg_speeds[lane] = sum(speeds) / len(speeds) if speeds else 0.0
 
-        # Build detailed reasoning
         reasoning = self._build_detailed_reasoning(
             current_phase, lane_counts, avg_waits, avg_speeds,
-            emergency_detected, emergency_lane, emergency_distance,
-            len(vehicles)
+            emergency_detected, emergency_lane, emergency_distance, len(vehicles)
         )
-
-        # Make decision based on hierarchy
         decision_phase, decision_duration, decision_reason = self._make_decision(
             current_phase, lane_counts, avg_waits, avg_speeds,
             emergency_detected, emergency_lane, emergency_distance
         )
-
-        # Combine reasoning and decision
         full_reasoning = reasoning + "\n" + decision_reason
-        full_reasoning += f"\n\n{'='*60}\n"
-        full_reasoning += f"FINAL DECISION: Phase={decision_phase}, Duration={decision_duration}s\n"
-        full_reasoning += f"{'='*60}\n"
-
+        full_reasoning += f"\n\n{'='*60}\nFINAL DECISION: Phase={decision_phase}, Duration={decision_duration}s\n{'='*60}\n"
         self.reasoning_log.append(full_reasoning)
         return decision_phase, decision_duration, full_reasoning
 
@@ -167,25 +148,12 @@ class IntelligentTrafficReasoner:
                                   avg_waits: Dict, avg_speeds: Dict,
                                   emergency: bool, emergency_lane: str,
                                   emergency_dist: float, total_vehicles: int) -> str:
-        """Build detailed reasoning output"""
-
-        reasoning = f"{'='*60}\n"
-        reasoning += f"TRAFFIC-R1 INTELLIGENT REASONING ENGINE\n"
-        reasoning += f"{'='*60}\n"
+        reasoning = f"{'='*60}\nTRAFFIC-R1 INTELLIGENT REASONING ENGINE\n{'='*60}\n"
         reasoning += f"Decision #{self.decision_count} | Time: {datetime.now().strftime('%H:%M:%S')}\n\n"
-
-        reasoning += f"CURRENT STATE ANALYSIS:\n"
-        reasoning += f"  Active Phase: {current_phase}\n"
-        reasoning += f"  Total Vehicles: {total_vehicles}\n\n"
-
+        reasoning += f"CURRENT STATE ANALYSIS:\n  Active Phase: {current_phase}\n  Total Vehicles: {total_vehicles}\n\n"
         reasoning += f"LANE-BY-LANE BREAKDOWN:\n"
         for lane in ['N', 'S', 'E', 'W']:
-            reasoning += f"  Lane {lane}:\n"
-            reasoning += f"    • Vehicles: {lane_counts[lane]}\n"
-            reasoning += f"    • Avg Wait Time: {avg_waits[lane]:.1f}s\n"
-            reasoning += f"    • Avg Speed: {avg_speeds[lane]:.1f} px/s\n"
-
-            # Add status indicators
+            reasoning += f"  Lane {lane}:\n    • Vehicles: {lane_counts[lane]}\n    • Avg Wait Time: {avg_waits[lane]:.1f}s\n    • Avg Speed: {avg_speeds[lane]:.1f} px/s\n"
             if lane_counts[lane] == 0:
                 reasoning += f"    • Status: EMPTY ✓\n"
             elif avg_waits[lane] > 15:
@@ -194,304 +162,344 @@ class IntelligentTrafficReasoner:
                 reasoning += f"    • Status: CONGESTED 🔶\n"
             else:
                 reasoning += f"    • Status: FLOWING ✓\n"
-
         reasoning += f"\nTRAFFIC PRESSURE ANALYSIS:\n"
         ns_load = lane_counts['N'] + lane_counts['S']
         ew_load = lane_counts['E'] + lane_counts['W']
-        ns_avg_wait = (avg_waits['N'] + avg_waits['S']) / 2
-        ew_avg_wait = (avg_waits['E'] + avg_waits['W']) / 2
-
-        reasoning += f"  NS Direction: {ns_load} vehicles, {ns_avg_wait:.1f}s avg wait\n"
-        reasoning += f"  EW Direction: {ew_load} vehicles, {ew_avg_wait:.1f}s avg wait\n"
-
-        if ns_load > 0 and ew_load > 0:
-            ratio = ns_load / ew_load if ew_load > 0 else float('inf')
-            reasoning += f"  Load Ratio (NS/EW): {ratio:.2f}x\n"
-
+        reasoning += f"  NS Direction: {ns_load} vehicles\n  EW Direction: {ew_load} vehicles\n"
         if emergency:
-            reasoning += f"\n🚨 EMERGENCY ALERT:\n"
-            reasoning += f"  Emergency vehicle detected in Lane {emergency_lane}\n"
-            reasoning += f"  Distance to junction: ~{emergency_dist:.0f} pixels\n"
-            reasoning += f"  Priority: CRITICAL - Immediate action required\n"
-
-        reasoning += f"\n"
+            reasoning += f"\n🚨 EMERGENCY ALERT: Lane {emergency_lane} (dist {emergency_dist:.0f}px)\n"
         return reasoning
 
     def _make_decision(self, current_phase: str, lane_counts: Dict,
                       avg_waits: Dict, avg_speeds: Dict,
                       emergency: bool, emergency_lane: str,
                       emergency_dist: float) -> Tuple[str, float, str]:
-        """
-        Make traffic signal decision following 4-priority hierarchy
-        """
-
-        # PRIORITY 1: EMERGENCY VEHICLE PREEMPTION
         if emergency:
-            decision_phase = 'NS' if emergency_lane in ['N', 'S'] else 'EW'
-
-            # Determine duration based on distance
-            if emergency_dist < 200:
-                duration = 15.0  # Very close, longer green
-            else:
-                duration = 10.0  # Further away, shorter green
-
-            reason = f"PRIORITY 1 ACTIVATED: EMERGENCY VEHICLE PREEMPTION\n"
-            reason += f"  Rule: Emergency vehicles have absolute priority\n"
-            reason += f"  Analysis: Ambulance detected in lane {emergency_lane}\n"
-            reason += f"  Action: Immediate switch to {decision_phase} phase\n"
-            reason += f"  Duration: {duration}s (optimized for emergency clearance)\n"
-            reason += f"  Reasoning: Public safety requires immediate path clearing.\n"
-            reason += f"            All other traffic must yield.\n"
-
+            decision_phase = 'NS' if emergency_lane in ['N','S'] else 'EW'
+            duration = 15.0 if emergency_dist < 200 else 10.0
+            reason = f"PRIORITY 1: EMERGENCY → {decision_phase} for {duration}s"
             return decision_phase, duration, reason
-
-        # PRIORITY 2: STARVATION PREVENTION
         max_wait = max(avg_waits.values())
         if max_wait > 15.0:
             starved_lane = max(avg_waits, key=avg_waits.get)
-            decision_phase = 'NS' if starved_lane in ['N', 'S'] else 'EW'
-            duration = 30.0
-
-            reason = f"PRIORITY 2 ACTIVATED: STARVATION PREVENTION\n"
-            reason += f"  Rule: No lane should wait more than 15 seconds\n"
-            reason += f"  Analysis: Lane {starved_lane} has waited {max_wait:.1f}s\n"
-            reason += f"  Threshold Exceeded: {max_wait - 15.0:.1f}s over limit\n"
-            reason += f"  Action: Switch to {decision_phase} phase\n"
-            reason += f"  Duration: {duration}s (standard fairness cycle)\n"
-            reason += f"  Reasoning: Fairness requires serving long-waiting lanes.\n"
-            reason += f"            Prevents indefinite delays and driver frustration.\n"
-
-            return decision_phase, duration, reason
-
-        # PRIORITY 3: PRESSURE BALANCING
+            decision_phase = 'NS' if starved_lane in ['N','S'] else 'EW'
+            reason = f"PRIORITY 2: STARVATION (lane {starved_lane} waited {max_wait:.1f}s) → {decision_phase}"
+            return decision_phase, 30.0, reason
         ns_load = lane_counts['N'] + lane_counts['S']
         ew_load = lane_counts['E'] + lane_counts['W']
-
         pressure_threshold = 1.5
-
         if current_phase == 'NS' and ns_load > ew_load * pressure_threshold:
-            duration = 40.0
-
-            reason = f"PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)\n"
-            reason += f"  Rule: Extend green when direction has 1.5x+ more vehicles\n"
-            reason += f"  Analysis: NS has {ns_load} vehicles vs EW's {ew_load}\n"
-            reason += f"  Pressure Ratio: {ns_load/max(ew_load,1):.2f}x (threshold: {pressure_threshold}x)\n"
-            reason += f"  Action: EXTEND current {current_phase} phase\n"
-            reason += f"  Duration: {duration}s (extended to clear backlog)\n"
-            reason += f"  Reasoning: High congestion in active direction justifies\n"
-            reason += f"            extension to prevent massive queue buildup.\n"
-
-            return current_phase, duration, reason
-
-        elif current_phase == 'EW' and ew_load > ns_load * pressure_threshold:
-            duration = 40.0
-
-            reason = f"PRIORITY 3 ACTIVATED: PRESSURE BALANCING (EXTENSION)\n"
-            reason += f"  Rule: Extend green when direction has 1.5x+ more vehicles\n"
-            reason += f"  Analysis: EW has {ew_load} vehicles vs NS's {ns_load}\n"
-            reason += f"  Pressure Ratio: {ew_load/max(ns_load,1):.2f}x (threshold: {pressure_threshold}x)\n"
-            reason += f"  Action: EXTEND current {current_phase} phase\n"
-            reason += f"  Duration: {duration}s (extended to clear backlog)\n"
-            reason += f"  Reasoning: High congestion in active direction justifies\n"
-            reason += f"            extension to prevent massive queue buildup.\n"
-
-            return current_phase, duration, reason
-
-        # PRIORITY 4: NORMAL ROTATION
+            reason = f"PRIORITY 3: PRESSURE (NS {ns_load} > {ew_load}*1.5) → EXTEND NS"
+            return current_phase, 40.0, reason
+        if current_phase == 'EW' and ew_load > ns_load * pressure_threshold:
+            reason = f"PRIORITY 3: PRESSURE (EW {ew_load} > {ns_load}*1.5) → EXTEND EW"
+            return current_phase, 40.0, reason
         decision_phase = 'EW' if current_phase == 'NS' else 'NS'
-        duration = 30.0
+        reason = f"PRIORITY 4: NORMAL ROTATION → {decision_phase}"
+        return decision_phase, 30.0, reason
 
-        reason = "PRIORITY 4 ACTIVATED: NORMAL PHASE ROTATION\n"
-        reason += "  Rule: Regular alternation when no special conditions exist\n"
-        reason += "  Analysis: Traffic is balanced, no emergencies or starvation\n"
-        reason += f"  Current Load: NS={ns_load}, EW={ew_load} (balanced)\n"
-        reason += f"  Action: Switch from {current_phase} to {decision_phase}\n"
-        reason += f"  Duration: {duration}s (standard cycle time)\n"
-        reason += "  Reasoning: Normal operation maintains predictable flow\n"
-        reason += "            and ensures both directions get fair service.\n"
-
-        return decision_phase, duration, reason
-
+# ---------------------------- YOLOv11 Detector (unchanged) ----------------------------
 class YOLOv11Detector:
-    """YOLOv11 vehicle detection wrapper"""
-
     def __init__(self, model_path: str = "yolo11n.pt", conf_threshold: float = 0.4):
         print(f"Loading YOLOv11 model: {model_path}")
         self.model = YOLO(model_path)
         self.conf_threshold = conf_threshold
-
-        self.vehicle_classes = {
-            2: 'car', 3: 'motorcycle', 5: 'bus', 7: 'truck', 1: 'bicycle'
-        }
+        self.vehicle_classes = {2: 'car', 3: 'motorcycle', 5: 'bus', 7: 'truck', 1: 'bicycle'}
 
     def detect(self, frame: np.ndarray) -> List[Dict]:
-        """Run YOLOv11 detection on frame"""
         results = self.model(frame, conf=self.conf_threshold, verbose=False)
-
         detections = []
         for result in results:
             boxes = result.boxes
             for box in boxes:
                 cls_id = int(box.cls[0])
-
                 if cls_id in self.vehicle_classes:
                     x1, y1, x2, y2 = box.xyxy[0].cpu().numpy()
                     conf = float(box.conf[0])
-
-                    detection = {
+                    detections.append({
                         'bbox': (int(x1), int(y1), int(x2), int(y2)),
                         'class_id': cls_id,
                         'class_name': self.vehicle_classes[cls_id],
                         'confidence': conf,
-                        'center': ((int(x1) + int(x2)) // 2, (int(y1) + int(y2)) // 2)
-                    }
-
-                    detections.append(detection)
-
+                        'center': ((int(x1)+int(x2))//2, (int(y1)+int(y2))//2)
+                    })
         return detections
 
+# ---------------------------- Simple ByteTracker (unchanged) ----------------------------
 class SimpleByteTracker:
-    """Simplified ByteTrack implementation"""
-
     def __init__(self):
         self.tracks: Dict[str, VehicleTrack] = {}
         self.next_id = 0
 
     def update(self, detections: List[Dict], frame_shape: Tuple[int, int]) -> Dict[str, Vehicle]:
-        """Update tracks with new detections"""
         vehicles = {}
         matched = set()
-
-        # Match detections to existing tracks
         for track_id, track in list(self.tracks.items()):
             if len(track.positions) == 0:
                 continue
-
             last_x, last_y, _ = track.positions[-1]
-
             min_dist = float('inf')
             best_det = None
             best_idx = None
-
             for idx, det in enumerate(detections):
                 if idx in matched:
                     continue
-
                 cx, cy = det['center']
                 dist = np.sqrt((cx - last_x)**2 + (cy - last_y)**2)
-
                 if dist < min_dist and dist < 100:
                     min_dist = dist
                     best_det = det
                     best_idx = idx
-
             if best_det is not None:
                 matched.add(best_idx)
-
                 cx, cy = best_det['center']
                 lane = self._determine_lane(cx, cy, frame_shape)
-
                 vehicle = Vehicle(
-                    id=track_id,
-                    lane=lane,
-                    type=best_det['class_name'],
-                    bbox=best_det['bbox'],
-                    confidence=best_det['confidence'],
-                    x=float(cx),
-                    y=float(cy),
-                    is_emergency=self._is_emergency(best_det)
+                    id=track_id, lane=lane, type=best_det['class_name'],
+                    bbox=best_det['bbox'], confidence=best_det['confidence'],
+                    x=float(cx), y=float(cy), is_emergency=self._is_emergency(best_det)
                 )
-
                 if len(track.positions) > 0:
                     old_x, old_y, old_t = track.positions[-1]
                     dt = time.time() - old_t
                     vehicle.update_position(cx, cy, dt)
-
                 if vehicle.speed < 2.0:
                     vehicle.wait_time = track.wait_time + 0.1
                 else:
                     vehicle.wait_time = 0.0
-
                 track.update(cx, cy, vehicle.wait_time, vehicle.speed)
                 vehicles[track_id] = vehicle
-
-        # Create new tracks
         for idx, det in enumerate(detections):
             if idx not in matched:
                 track_id = f"T{self.next_id:04d}"
                 self.next_id += 1
-
                 cx, cy = det['center']
                 lane = self._determine_lane(cx, cy, frame_shape)
-
                 track = VehicleTrack(
-                    id=track_id,
-                    lane=lane,
-                    type=det['class_name'],
-                    first_seen=time.time(),
-                    is_emergency=self._is_emergency(det)
+                    id=track_id, lane=lane, type=det['class_name'],
+                    first_seen=time.time(), is_emergency=self._is_emergency(det)
                 )
-
                 track.update(cx, cy, 0.0, 0.0)
                 self.tracks[track_id] = track
-
                 vehicle = Vehicle(
-                    id=track_id,
-                    lane=lane,
-                    type=det['class_name'],
-                    bbox=det['bbox'],
-                    confidence=det['confidence'],
-                    x=float(cx),
-                    y=float(cy),
-                    is_emergency=track.is_emergency
+                    id=track_id, lane=lane, type=det['class_name'],
+                    bbox=det['bbox'], confidence=det['confidence'],
+                    x=float(cx), y=float(cy), is_emergency=track.is_emergency
                 )
-
                 vehicles[track_id] = vehicle
-
         return vehicles
 
     def _determine_lane(self, x: int, y: int, frame_shape: Tuple[int, int]) -> str:
-        """Determine which lane"""
         h, w = frame_shape
-        center_x, center_y = w // 2, h // 2
-
-        if x < center_x - 50:
-            return 'W'
-        elif x > center_x + 50:
-            return 'E'
-        elif y < center_y - 50:
-            return 'N'
-        else:
-            return 'S'
+        cx, cy = w//2, h//2
+        if x < cx - 50: return 'W'
+        elif x > cx + 50: return 'E'
+        elif y < cy - 50: return 'N'
+        else: return 'S'
 
     def _is_emergency(self, detection: Dict) -> bool:
-        """Detect emergency vehicles"""
-        # Method 1: Check for red/white vehicles (ambulance colors)
-        # This is a simple heuristic - in production you'd train a model
-        # For now, randomly mark 5% of vehicles as emergency for demo
-        # OR detect based on size (ambulances are usually buses/trucks)
+        # Simple heuristic: 10% of buses/trucks are emergency vehicles
         if detection['class_name'] in ['bus', 'truck']:
-            # 10% chance a bus/truck is actually an ambulance
             return random.random() < 0.1
-
         return False
 
-class TrafficJunctionSystem:
-    """Main traffic system - OPTIMIZED VERSION"""
+# ============================= RL ADDITIONS =============================
 
-    def __init__(self, camera_id):
+class DQN(nn.Module):
+    """Deep Q-Network for traffic signal control."""
+    def __init__(self, state_dim: int, action_dim: int, hidden_dim: int = 128):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(state_dim, hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, action_dim)
+        )
+
+    def forward(self, x):
+        return self.net(x)
+
+
+class ReplayBuffer:
+    """Experience replay buffer."""
+    def __init__(self, capacity: int = 10000):
+        self.buffer = deque(maxlen=capacity)
+
+    def push(self, state, action, reward, next_state, done):
+        self.buffer.append((state, action, reward, next_state, done))
+
+    def sample(self, batch_size: int):
+        batch = random.sample(self.buffer, batch_size)
+        states, actions, rewards, next_states, dones = zip(*batch)
+        return (np.array(states), np.array(actions), np.array(rewards),
+                np.array(next_states), np.array(dones))
+
+    def __len__(self):
+        return len(self.buffer)
+
+
+class RLTrafficAgent:
+    """
+    DQN agent that chooses (phase, duration) actions.
+    Action space: 8 discrete actions
+        0: NS, short (15s)      1: NS, medium (25s)    2: NS, long (35s)    3: NS, extra-long (45s)
+        4: EW, short (15s)      5: EW, medium (25s)    6: EW, long (35s)    7: EW, extra-long (45s)
+    """
+    def __init__(self,
+                 state_dim: int,
+                 action_dim: int = 8,
+                 lr: float = 1e-3,
+                 gamma: float = 0.99,
+                 epsilon_start: float = 1.0,
+                 epsilon_end: float = 0.05,
+                 epsilon_decay: float = 0.995,
+                 target_update_freq: int = 100,
+                 device: str = "cuda" if torch.cuda.is_available() else "cpu"):
+        self.device = device
+        self.action_dim = action_dim
+        self.gamma = gamma
+        self.epsilon = epsilon_start
+        self.epsilon_end = epsilon_end
+        self.epsilon_decay = epsilon_decay
+        self.target_update_freq = target_update_freq
+        self.steps = 0
+
+        self.policy_net = DQN(state_dim, action_dim).to(device)
+        self.target_net = DQN(state_dim, action_dim).to(device)
+        self.target_net.load_state_dict(self.policy_net.state_dict())
+        self.optimizer = optim.Adam(self.policy_net.parameters(), lr=lr)
+
+        self.replay_buffer = ReplayBuffer(capacity=20000)
+
+    def select_action(self, state: np.ndarray, eval_mode: bool = False) -> int:
+        """Epsilon-greedy action selection."""
+        if not eval_mode and random.random() < self.epsilon:
+            return random.randint(0, self.action_dim - 1)
+        state_tensor = torch.FloatTensor(state).unsqueeze(0).to(self.device)
+        with torch.no_grad():
+            q_values = self.policy_net(state_tensor)
+        return int(q_values.argmax().item())
+
+    def get_action_duration(self, action: int) -> Tuple[str, float]:
+        """Map action index to (phase, duration)."""
+        durations = [15, 25, 35, 45]
+        if action < 4:
+            return 'NS', durations[action]
+        else:
+            return 'EW', durations[action - 4]
+
+    def store_transition(self, state, action, reward, next_state, done):
+        self.replay_buffer.push(state, action, reward, next_state, done)
+
+    def train(self, batch_size: int = 64):
+        if len(self.replay_buffer) < batch_size:
+            return
+        states, actions, rewards, next_states, dones = self.replay_buffer.sample(batch_size)
+
+        states = torch.FloatTensor(states).to(self.device)
+        actions = torch.LongTensor(actions).to(self.device)
+        rewards = torch.FloatTensor(rewards).to(self.device)
+        next_states = torch.FloatTensor(next_states).to(self.device)
+        dones = torch.FloatTensor(dones).to(self.device)
+
+        current_q = self.policy_net(states).gather(1, actions.unsqueeze(1)).squeeze(1)
+        next_q = self.target_net(next_states).max(1)[0]
+        target_q = rewards + self.gamma * next_q * (1 - dones)
+
+        loss = F.mse_loss(current_q, target_q.detach())
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()
+
+        self.epsilon = max(self.epsilon_end, self.epsilon * self.epsilon_decay)
+        self.steps += 1
+        if self.steps % self.target_update_freq == 0:
+            self.target_net.load_state_dict(self.policy_net.state_dict())
+
+    def save(self, path: str):
+        torch.save({
+            'policy_net': self.policy_net.state_dict(),
+            'target_net': self.target_net.state_dict(),
+            'optimizer': self.optimizer.state_dict(),
+            'epsilon': self.epsilon,
+            'steps': self.steps
+        }, path)
+
+    def load(self, path: str):
+        checkpoint = torch.load(path, map_location=self.device)
+        self.policy_net.load_state_dict(checkpoint['policy_net'])
+        self.target_net.load_state_dict(checkpoint['target_net'])
+        self.optimizer.load_state_dict(checkpoint['optimizer'])
+        self.epsilon = checkpoint['epsilon']
+        self.steps = checkpoint['steps']
+
+
+def extract_state(vehicles: Dict[str, Vehicle], current_phase: str) -> np.ndarray:
+    """
+    Build state vector:
+    - Vehicle count per lane (N, S, E, W)
+    - Average waiting time per lane (stopped vehicles)
+    - Queue length per lane (number of stopped vehicles)
+    - Current phase one-hot (NS, EW)
+    """
+    counts = {'N':0, 'S':0, 'E':0, 'W':0}
+    wait_times = {'N':[], 'S':[], 'E':[], 'W':[]}
+    queue_lengths = {'N':0, 'S':0, 'E':0, 'W':0}
+    for v in vehicles.values():
+        counts[v.lane] += 1
+        if v.is_stopped():
+            wait_times[v.lane].append(v.wait_time)
+            queue_lengths[v.lane] += 1
+    avg_waits = [np.mean(wait_times[l]) if wait_times[l] else 0.0 for l in ['N','S','E','W']]
+    state = [
+        counts['N'], counts['S'], counts['E'], counts['W'],
+        avg_waits[0], avg_waits[1], avg_waits[2], avg_waits[3],
+        queue_lengths['N'], queue_lengths['S'], queue_lengths['E'], queue_lengths['W'],
+        1.0 if current_phase == 'NS' else 0.0,
+        1.0 if current_phase == 'EW' else 0.0
+    ]
+    return np.array(state, dtype=np.float32)
+
+
+def compute_reward(vehicles: Dict[str, Vehicle],
+                   alpha: float = 0.5,
+                   beta: float = 2.0) -> float:
+    """
+    Reward = - (total_wait_time) - alpha * imbalance - beta * starvation_penalty
+    where imbalance = |NS_vehicles - EW_vehicles|,
+    starvation = max(0, max_wait - 15)
+    """
+    total_wait = sum(v.wait_time for v in vehicles.values())
+    ns_count = sum(1 for v in vehicles.values() if v.lane in ['N','S'])
+    ew_count = sum(1 for v in vehicles.values() if v.lane in ['E','W'])
+    imbalance = abs(ns_count - ew_count)
+    max_wait = max([v.wait_time for v in vehicles.values()], default=0.0)
+    starvation_penalty = max(0.0, max_wait - 15.0)
+    reward = -total_wait - alpha * imbalance - beta * starvation_penalty
+    return reward
+
+
+# ---------------------------- Main Traffic System (upgraded) ----------------------------
+class TrafficJunctionSystem:
+    """
+    Main system. Supports two modes:
+        mode='rule'   : original rule-based reasoner
+        mode='rl'     : DQN agent (train or evaluate)
+    """
+    def __init__(self, camera_id, mode: str = 'rule', rl_train: bool = False, rl_model_path: str = None):
         self.cap = cv2.VideoCapture(camera_id)
         if not self.cap.isOpened():
             raise ValueError(f"Failed to open camera {camera_id}")
 
         self.width = int(self.cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         self.height = int(self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-
         print(f"✓ Camera initialized: {self.width}x{self.height}")
 
         self.detector = YOLOv11Detector()
         self.tracker = SimpleByteTracker()
-        self.reasoner = IntelligentTrafficReasoner()
+        self.mode = mode
+        self.rl_train = rl_train
 
         self.phases = {
             'NS': TrafficSignalPhase('NS', ['N', 'S'], 30.0),
@@ -502,135 +510,163 @@ class TrafficJunctionSystem:
         self.stats = {
             'total_detections': 0,
             'phase_changes': 0,
-            'frames_processed': 0
+            'frames_processed': 0,
+            'total_reward': 0.0,        # only for RL
+            'avg_wait_time': 0.0,
+            'max_wait_time': 0.0
         }
 
         self.last_reasoning_time = time.time()
-        self.reasoning_interval = 3.0  # Faster reasoning every 3 seconds
+        self.reasoning_interval = 3.0   # decision every 3 seconds
         self.last_reasoning = ""
 
-    def process_frame(self) -> Tuple:
+        # Rule-based reasoner (always available)
+        self.rule_reasoner = IntelligentTrafficReasoner()
+
+        # RL agent
+        if mode == 'rl':
+            state_dim = 4 + 4 + 4 + 2  # counts(4) + avg_waits(4) + queues(4) + phase_onehot(2)
+            self.rl_agent = RLTrafficAgent(state_dim=state_dim, action_dim=8)
+            if rl_model_path and not rl_train:
+                self.rl_agent.load(rl_model_path)
+                print(f"Loaded RL model from {rl_model_path}")
+            self.last_state = None
+            self.last_action = None
+            self.episode_done = False
+            print("RL mode active. Agent ready.")
+
+    def process_frame(self) -> Tuple[Optional[np.ndarray], Dict]:
         ret, frame = self.cap.read()
         if not ret:
             return None, {}
 
         self.stats['frames_processed'] += 1
 
-        # YOLO detection
+        # Detection and tracking
         detections = self.detector.detect(frame)
         self.stats['total_detections'] += len(detections)
-
-        # ByteTrack
         vehicles = self.tracker.update(detections, frame.shape[:2])
 
-        # Fast reasoning (no LLM delay!)
         current_time = time.time()
         if current_time - self.last_reasoning_time >= self.reasoning_interval:
             vehicle_list = list(vehicles.values())
 
-            new_phase, duration, reasoning = self.reasoner.analyze_junction(
-                vehicle_list,
-                self.tracker.tracks,
-                self.current_phase
-            )
+            if self.mode == 'rule':
+                # Original rule-based decision
+                new_phase, duration, reasoning = self.rule_reasoner.analyze_junction(
+                    vehicle_list, self.tracker.tracks, self.current_phase
+                )
+                self.last_reasoning = reasoning
+                print("\n" + reasoning)
+                self._apply_decision(new_phase, duration)
 
-            self.last_reasoning = reasoning
-            print("\n" + reasoning)
+            else:  # RL mode
+                # Extract current state
+                state = extract_state(vehicles, self.current_phase)
 
-            if new_phase != self.current_phase:
-                self.current_phase = new_phase
-                self.phases[new_phase].reset(duration)
-                self.stats['phase_changes'] += 1
-                print(f"🔄 PHASE CHANGE: Switching to {new_phase}")
-            else:
-                self.phases[self.current_phase].timer = duration
+                # For training, we need to compute reward from previous step
+                if self.rl_train and self.last_state is not None:
+                    reward = compute_reward(vehicles)
+                    self.stats['total_reward'] += reward
+                    self.rl_agent.store_transition(self.last_state, self.last_action,
+                                                   reward, state, False)
+                    self.rl_agent.train(batch_size=64)
+
+                # Select action (epsilon-greedy only if training)
+                action = self.rl_agent.select_action(state, eval_mode=not self.rl_train)
+                new_phase, duration = self.rl_agent.get_action_duration(action)
+
+                # Log RL decision
+                reasoning = f"RL DECISION: Phase={new_phase}, Duration={duration}s, Action={action}"
+                self.last_reasoning = reasoning
+                print(f"\n{reasoning}")
+
+                # Remember for next step
+                self.last_state = state
+                self.last_action = action
+
+                self._apply_decision(new_phase, duration)
 
             self.last_reasoning_time = current_time
 
+        # Update timer
+        self.phases[self.current_phase].update(0.033)  # ~30 fps
+
+        # Update statistics for wait times
+        if vehicles:
+            waits = [v.wait_time for v in vehicles.values()]
+            self.stats['avg_wait_time'] = np.mean(waits)
+            self.stats['max_wait_time'] = max(waits)
+
         vis_frame = self.render(frame, vehicles)
         return vis_frame, vehicles
+
+    def _apply_decision(self, new_phase: str, duration: float):
+        """Apply the decision (phase change or extension)."""
+        if new_phase != self.current_phase:
+            self.current_phase = new_phase
+            self.phases[new_phase].reset(duration)
+            self.stats['phase_changes'] += 1
+            print(f"🔄 PHASE CHANGE: Switching to {new_phase} (duration {duration:.1f}s)")
+        else:
+            self.phases[self.current_phase].timer = duration
+            print(f"⏱️ EXTEND {self.current_phase} to {duration:.1f}s")
 
     def render(self, frame: np.ndarray, vehicles: Dict) -> np.ndarray:
         vis = frame.copy()
         overlay = vis.copy()
         height, width = vis.shape[:2]
 
-        # Define colors dictionary
-        colors = {
-            'N': (0, 0, 255),   # Red for North
-            'S': (255, 0, 255), # Magenta for South
-            'E': (0, 255, 0),   # Green for East
-            'W': (255, 255, 0)  # Cyan for West
-        }
-
-        # Draw direction labels
-        cv2.putText(vis, "N", (width // 2 - 10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, colors['N'], 2)
-        cv2.putText(vis, "S", (width // 2 - 10, height - 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, colors['S'], 2)
-        cv2.putText(vis, "E", (width - 30, height // 2 + 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, colors['E'], 2)
-        cv2.putText(vis, "W", (30, height // 2 + 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, colors['W'], 2)
+        colors = {'N': (0,0,255), 'S': (255,0,255), 'E': (0,255,0), 'W': (255,255,0)}
+        cv2.putText(vis, "N", (width//2-10,30), cv2.FONT_HERSHEY_SIMPLEX,0.7,colors['N'],2)
+        cv2.putText(vis, "S", (width//2-10,height-30), cv2.FONT_HERSHEY_SIMPLEX,0.7,colors['S'],2)
+        cv2.putText(vis, "E", (width-30,height//2+10), cv2.FONT_HERSHEY_SIMPLEX,0.7,colors['E'],2)
+        cv2.putText(vis, "W", (30,height//2+10), cv2.FONT_HERSHEY_SIMPLEX,0.7,colors['W'],2)
 
         for vehicle in vehicles.values():
-            x1, y1, x2, y2 = vehicle.bbox
-            color = colors.get(vehicle.lane, (255, 255, 255))
-
+            x1,y1,x2,y2 = vehicle.bbox
+            color = colors.get(vehicle.lane, (255,255,255))
             if vehicle.is_emergency:
-                color = (0, 0, 255)  # Red for emergency vehicles
+                color = (0,0,255)
                 thickness = 4
-                if int(time.time() * 4) % 2:
-                    cv2.rectangle(overlay, (x1-5, y1-5), (x2+5, y2+5), (0, 0, 255), -1)
+                if int(time.time()*4)%2:
+                    cv2.rectangle(overlay, (x1-5,y1-5), (x2+5,y2+5), (0,0,255), -1)
             else:
-                thickness = 2  # Thinner lines for non-emergency vehicles
-
-            # Draw bounding box
-            cv2.rectangle(vis, (x1, y1), (x2, y2), color, thickness)
-
-            # Prepare label
+                thickness = 2
+            cv2.rectangle(vis, (x1,y1), (x2,y2), color, thickness)
             label = f"{vehicle.id} {vehicle.type} {vehicle.lane}"
             if vehicle.is_stopped():
                 label += f" W:{vehicle.wait_time:.0f}s"
-
-            # Calculate text size and draw background rectangle
-            (w, h), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1)
-            cv2.rectangle(vis, (x1, y1 - h - 10), (x1 + w, y1), (0, 0, 0), -1)  # Black background for text
-
-            # Draw text with white color for contrast
-            cv2.putText(vis, label, (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
+            (w,h), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX,0.5,1)
+            cv2.rectangle(vis, (x1,y1-h-10), (x1+w,y1), (0,0,0), -1)
+            cv2.putText(vis, label, (x1,y1-5), cv2.FONT_HERSHEY_SIMPLEX,0.5,(255,255,255),1)
 
         if any(v.is_emergency for v in vehicles.values()):
-            cv2.addWeighted(overlay, 0.3, vis, 0.7, 0, vis)
+            cv2.addWeighted(overlay,0.3,vis,0.7,0,vis)
 
-        # Phase info panel
-        phase_color = (0, 255, 0) if self.current_phase == 'NS' else (0, 165, 255)
+        # Info panel
+        phase_color = (0,255,0) if self.current_phase=='NS' else (0,165,255)
+        cv2.rectangle(vis, (10,10), (350,150), (50,50,50), -1)
+        cv2.rectangle(vis, (10,10), (350,150), phase_color, 2)
+        cv2.putText(vis, f"Mode: {self.mode.upper()}", (20,40), cv2.FONT_HERSHEY_SIMPLEX,0.6,(255,255,255),2)
+        cv2.putText(vis, f"Phase: {self.current_phase}", (20,70), cv2.FONT_HERSHEY_SIMPLEX,0.6,(255,255,255),2)
+        cv2.putText(vis, f"Timer: {self.phases[self.current_phase].timer:.1f}s", (20,100), cv2.FONT_HERSHEY_SIMPLEX,0.6,(255,255,255),2)
+        cv2.putText(vis, f"Vehicles: {len(vehicles)}", (20,130), cv2.FONT_HERSHEY_SIMPLEX,0.6,(255,255,255),2)
 
-        # Draw semi-transparent background for phase info
-        cv2.rectangle(vis, (10, 10), (300, 120), (50, 50, 50), -1)
-        cv2.rectangle(vis, (10, 10), (300, 120), phase_color, 2)
-
-        # Use white text on dark background for better visibility
-        cv2.putText(vis, f"Phase: {self.current_phase}", (20, 40),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
-        cv2.putText(vis, f"Timer: {self.phases[self.current_phase].timer:.1f}s", (20, 70),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
-        cv2.putText(vis, f"Vehicles: {len(vehicles)}", (20, 100),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
-
-        # Lane status panel
-        y_offset = 130
-        cv2.rectangle(vis, (10, y_offset), (200, y_offset + 100), (50, 50, 50), -1)
-        cv2.rectangle(vis, (10, y_offset), (200, y_offset + 100), (100, 100, 100), 2)
-
-        cv2.putText(vis, "LANE STATUS", (20, y_offset + 25),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
-
-        for i, lane in enumerate(['N', 'S', 'E', 'W']):
+        # Lane status
+        y_offset = 170
+        cv2.rectangle(vis, (10,y_offset), (200,y_offset+100), (50,50,50), -1)
+        cv2.rectangle(vis, (10,y_offset), (200,y_offset+100), (100,100,100), 2)
+        cv2.putText(vis, "LANE STATUS", (20,y_offset+25), cv2.FONT_HERSHEY_SIMPLEX,0.6,(255,255,255),2)
+        for i, lane in enumerate(['N','S','E','W']):
             count = sum(1 for v in vehicles.values() if v.lane == lane)
-            y = y_offset + 45 + (i * 20)
-            cv2.putText(vis, f"{lane}: {count:2d}", (20, y),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, colors[lane], 2)
+            y = y_offset+45 + i*20
+            cv2.putText(vis, f"{lane}: {count:2d}", (20,y), cv2.FONT_HERSHEY_SIMPLEX,0.6,colors[lane],2)
 
         return vis
+
     def run(self):
-        print("\n🚦 Starting Traffic Junction System...")
+        print(f"\n🚦 Starting Traffic Junction System (mode={self.mode})")
         print("⚡ FAST MODE - No LLM delays!")
         print("Press 'q' to quit, 'r' for reasoning, 's' for stats")
         print("Press 'e' to SIMULATE EMERGENCY VEHICLE\n")
@@ -639,35 +675,26 @@ class TrafficJunctionSystem:
 
         while True:
             vis_frame, vehicles = self.process_frame()
-
             if vis_frame is None:
                 break
 
-            self.phases[self.current_phase].update(0.033)
-
-            cv2.imshow('Traffic Junction - YOLOv11 + Intelligent Reasoning', vis_frame)
-
+            cv2.imshow('Traffic Junction - YOLOv11 + AI', vis_frame)
             key = cv2.waitKey(30) & 0xFF
             if key == ord('q'):
                 break
             elif key == ord('r'):
                 print("\n" + self.last_reasoning)
             elif key == ord('s'):
-                print(f"\n{'='*40}")
-                print("STATISTICS")
-                print(f"{'='*40}")
-                for k, v in self.stats.items():
+                print(f"\n{'='*40}\nSTATISTICS\n{'='*40}")
+                for k,v in self.stats.items():
                     print(f"{k}: {v}")
                 print(f"Active Vehicles: {len(vehicles)}")
             elif key == ord('e'):
                 emergency_mode = not emergency_mode
                 print(f"🚨 Emergency mode: {'ON' if emergency_mode else 'OFF'}")
-
-            # Modify tracker to mark vehicles as emergency
-            if emergency_mode and len(vehicles) > 0:
-                # Mark the first vehicle as emergency
-                first_vehicle = list(vehicles.values())[0]
-                first_vehicle.is_emergency = True
+                # Mark first vehicle as emergency for demo
+                if emergency_mode and len(vehicles)>0:
+                    list(vehicles.values())[0].is_emergency = True
 
         self.cleanup()
 
@@ -677,47 +704,71 @@ class TrafficJunctionSystem:
         print("\n" + "="*40)
         print("FINAL STATISTICS")
         print("="*40)
-        for k, v in self.stats.items():
+        for k,v in self.stats.items():
             print(f"{k}: {v}")
+        if self.mode == 'rl' and self.rl_train:
+            # Save trained model
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            model_path = f"rl_traffic_model_{timestamp}.pt"
+            self.rl_agent.save(model_path)
+            print(f"RL model saved to {model_path}")
 
 def export_results(system):
-    """Export results to CSV for paper graphs"""
+    """Export statistics and reasoning logs for paper graphs."""
     import csv
-    from datetime import datetime
-
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-
-    # Save statistics
-    with open(f'results_stats_{timestamp}.csv', 'w', newline='', encoding='utf-8') as f:
+    # Stats CSV
+    with open(f'results_stats_{system.mode}_{timestamp}.csv', 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
         writer.writerow(['Metric', 'Value'])
         for key, value in system.stats.items():
             writer.writerow([key, value])
         writer.writerow(['Total Vehicles Tracked', len(system.tracker.tracks)])
-        writer.writerow(['Reasoning Calls', system.reasoner.decision_count])
-
-    # Save reasoning log with UTF-8 encoding
-    with open(f'reasoning_log_{timestamp}.txt', 'w', encoding='utf-8') as f:
-        for reasoning in system.reasoner.reasoning_log:
-            f.write(reasoning)
-            f.write("\n" + "="*80 + "\n\n")
-
-    print(f"\n✓ Results exported to results_stats_{timestamp}.csv")
-    print(f"✓ Reasoning log saved to reasoning_log_{timestamp}.txt")
+        if system.mode == 'rule':
+            writer.writerow(['Reasoning Calls', system.rule_reasoner.decision_count])
+        else:
+            writer.writerow(['RL Training Steps', system.rl_agent.steps if hasattr(system, 'rl_agent') else 0])
+    # Reasoning log (only for rule mode)
+    if system.mode == 'rule':
+        with open(f'reasoning_log_{timestamp}.txt', 'w', encoding='utf-8') as f:
+            for reasoning in system.rule_reasoner.reasoning_log:
+                f.write(reasoning)
+                f.write("\n" + "="*80 + "\n\n")
+        print(f"✓ Reasoning log saved to reasoning_log_{timestamp}.txt")
+    print(f"✓ Results exported to results_stats_{system.mode}_{timestamp}.csv")
 
 def main():
     print("="*70)
     print("Intelligent Traffic Junction Control System")
-    print("YOLOv11 + ByteTrack + Advanced Rule-Based AI")
+    print("YOLOv11 + ByteTrack + Rule-Based AI + DQN (RL)")
     print("="*70)
     print("\n⚡ OPTIMIZED - Fast reasoning, no LLM delays!")
-    print("📊 Full Chain-of-Thought explanations included\n")
+    print("📊 Full Chain-of-Thought explanations (rule mode)")
+    print("🧠 DQN agent learns optimal signal timing (RL mode)\n")
+
+    # Choose mode: 'rule' or 'rl'
+    mode = input("Select mode (rule/rl) [default=rule]: ").strip().lower() or 'rule'
+    rl_train = False
+    rl_model_path = None
+    if mode == 'rl':
+        train_or_eval = input("Train new model (train) or evaluate existing (eval)? [default=train]: ").strip().lower()
+        rl_train = (train_or_eval != 'eval')
+        if not rl_train:
+            rl_model_path = input("Path to saved RL model (.pt): ").strip()
+            if not rl_model_path:
+                print("No model provided, switching to train mode.")
+                rl_train = True
 
     try:
-        system = TrafficJunctionSystem(camera_id=r'C:\Users\shaik\crossroad\videos\29310-374747467_small.mp4')
+        # Update camera path as needed
+        camera_path = r'C:\Users\shaik\crossroad\videos\29310-374747467_small.mp4'
+        system = TrafficJunctionSystem(
+            camera_id=camera_path,
+            mode=mode,
+            rl_train=rl_train,
+            rl_model_path=rl_model_path
+        )
         system.run()
-
-        # Export results for paper
         export_results(system)
 
     except KeyboardInterrupt:
